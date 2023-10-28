@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     public int MaxHealth;
-    public int CurrentHealth;
-  //  public GameManager GameManager;
+   // public int CurrentHealth;
+    //  public GameManager GameManager;
+    public Player script;
+
 
     public Image[] hearts;
     public Sprite fullHeart;
@@ -33,7 +35,7 @@ public class Health : MonoBehaviour
             }
 
 
-            if(i < CurrentHealth)
+            if(i < script.currentHealth)
             {
                 hearts[i].enabled = true;
             }

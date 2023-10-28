@@ -28,9 +28,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<GameObject>();
-        movement = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
-        player.gameObject.SetActive(true);
+      //  player = GameObject.FindGameObjectWithTag("Player").GetComponent<GameObject>();
+      //  movement = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+      //  player.gameObject.SetActive(true);
         //GetSceneName();
         Time.timeScale = 1f;
     }
