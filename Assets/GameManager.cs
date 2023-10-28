@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
   
 
     [Header("Player")]
-    public GameObject player;
-    public Movement movement;
+    public GameObject player1;
+    public GameObject player2;
 
     [Header("Victory/GameOver")]
 
@@ -74,7 +74,8 @@ public class GameManager : MonoBehaviour
         //Deactivate UI containing all other elements
         GameUI.GetComponent<Canvas>().enabled = false;
         //Disable the player, they shouldn't be able to control player after death
-        player.gameObject.SetActive(false);
+        player1.gameObject.SetActive(false);
+        player2.gameObject.SetActive(false);
 
         GameIsPaused = true; //core functions/updates in the game will halt while this is true
         hasLost = true; //Player has lost
