@@ -68,6 +68,15 @@ public class Movement2 : MonoBehaviour
             ApplyAirLinearDrag(); //apply air drag
             FallMultiplier();
         }
+
+        if (horizontalDirection > 0)
+        {
+            gameObject.transform.localScale = new Vector3(2, 2, 2);
+        }
+        if (horizontalDirection < 0)
+        {
+            gameObject.transform.localScale = new Vector3(-2, 2, 2);
+        }
     }
 
     private Vector2 GetInput()

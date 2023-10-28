@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Lives : MonoBehaviour
+public class Health : MonoBehaviour
 {
     public int lives;
     public int numOfHearts;
