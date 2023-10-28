@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Player1
   - Player2
+  - Food1
+  - Food2
   layers:
   - Default
   - TransparentFX
