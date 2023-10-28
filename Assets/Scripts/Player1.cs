@@ -7,6 +7,9 @@ public class Player1 : MonoBehaviour
     [Header("GameManager")]
     public GameManager GM; //GameManager
 
+    [Header("Score")]
+    public Score score;
+
     [Header("Player Handler")]
     public Player playerHandler;
 
@@ -33,6 +36,7 @@ public class Player1 : MonoBehaviour
             sprite.color = flashColor; //turn to flash colour
             yield return new WaitForSeconds(flashDuration); //how long to remain that sprite colour
             sprite.color = regularColor; //revert to regular colour
+            yield return new WaitForSeconds(flashDuration);
             temp++;
         }
         invincible = false; //when flashing is over they are able to be damaged again
@@ -41,8 +45,8 @@ public class Player1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Veg")) //whe not invincible and the object colliding with is an Enemy 
-            Debug.Log("SCORE INC"); //REPLACE WITH SCORE
+        if (other.CompareTag("Veg")) //when not invincible and the object colliding with is an Enemy 
+            score.UpdateScore();
         else if (!invincible && other.CompareTag("Meat"))
         {
             playerHandler.TakeDamage();

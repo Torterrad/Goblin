@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     [Header("Components")]
     [SerializeField] LayerMask groundLayer;
     [SerializeField] LayerMask playerLayer;
+    [SerializeField] SpriteRenderer playerSprite;
 
     [Header("Movement Variables")]
     [SerializeField] private float Acceleration = 50f;
@@ -71,11 +72,11 @@ public class Movement : MonoBehaviour
 
         if (horizontalDirection > 0)
         {
-            gameObject.transform.localScale = new Vector3(2, 2, 2);
+            playerSprite.flipX = false;
         }
-        if (horizontalDirection < 0)
+        else if (horizontalDirection < 0)
         {
-            gameObject.transform.localScale = new Vector3(-2, 2, 2);
+            playerSprite.flipX = true;
         }
     }
 
@@ -142,5 +143,11 @@ public class Movement : MonoBehaviour
         {
             isFalling = false; //player is no longer falling
         }
+    }
+    private void OnDrawGizmos()
+    {
+        //draw gizmos helps during testing, this shows the distance of raycast shooting
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(groundCheck.position, new Vector2(groundCheck.position.x, groundCheck.position.y - checkDistance));
     }
 }

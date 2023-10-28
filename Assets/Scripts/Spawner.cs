@@ -9,25 +9,41 @@ public class Spawner : MonoBehaviour
 
     [SerializeField] private GameObject foodObject;
 
-    public float targetTime = 2f;
+    [Header("Score")]
+    public Score score;
+
+    [SerializeField] private float targetIncrease = 1000f;
+
+    [SerializeField] private float timeReset;
+    [SerializeField] private float setTime = 3f;
+    [SerializeField] private float timeDecrement = 0.2f;
+
+    private void Awake()
+    {
+        timeReset = setTime;
+    }
 
     void Update()
     {
-        targetTime -= Time.deltaTime;
+        setTime -= Time.deltaTime;
 
-        if (targetTime <= 0.0f)
+        if (setTime <= 0.0f)
         {
             timerEnded();
         }
-
     }
 
     void timerEnded()
     {
         SpawnObject();
-        targetTime = 2f;
+        setTime = timeReset;
     }
 
+    public void timeDecrease()
+    {
+        if(setTime <= 0.8f)
+        setTime = setTime - timeDecrement;
+    }
     private void SpawnObject()
     {
         Vector3 difference = spawnA.position - spawnB.position;

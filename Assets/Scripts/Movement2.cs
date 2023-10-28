@@ -10,6 +10,7 @@ public class Movement2 : MonoBehaviour
     [Header("Components")]
     [SerializeField] LayerMask groundLayer;
     [SerializeField] LayerMask playerLayer;
+    [SerializeField] SpriteRenderer playerSprite;
 
     [Header("Movement Variables")]
     [SerializeField] private float Acceleration = 50f;
@@ -71,11 +72,11 @@ public class Movement2 : MonoBehaviour
 
         if (horizontalDirection > 0)
         {
-            gameObject.transform.localScale = new Vector3(2, 2, 2);
+            playerSprite.flipX = false;
         }
-        if (horizontalDirection < 0)
+        else if (horizontalDirection < 0)
         {
-            gameObject.transform.localScale = new Vector3(-2, 2, 2);
+            playerSprite.flipX = true;
         }
     }
 

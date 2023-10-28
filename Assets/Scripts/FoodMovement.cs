@@ -14,6 +14,7 @@ public class FoodMovement : MonoBehaviour
     private int foodSprite;
     [SerializeField] private float fallMin;
     [SerializeField] private float fallMax;
+    [SerializeField] private float fallIncrement;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,6 @@ public class FoodMovement : MonoBehaviour
             SetVeg();
         else
             SetMeat();
-
     }
 
     private void SetVeg()
@@ -42,6 +42,12 @@ public class FoodMovement : MonoBehaviour
         //pick sprite
         foodSprite = Random.Range(0, 11);
         GetComponent<SpriteRenderer>().sprite = meatList[foodSprite];
+    }
+
+    public void speedIncrease()
+    {
+        fallMin = fallMin + fallIncrement;
+        fallMax = fallMax + fallIncrement;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
