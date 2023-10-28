@@ -8,6 +8,9 @@ TagManager:
   - Player2
   - Food1
   - Food2
+  - Ground
+  - Veg
+  - Meat
   layers:
   - Default
   - TransparentFX
