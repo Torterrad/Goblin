@@ -185,6 +185,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 053f9a007da0f714fb757244038eb672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meatList:
+  - {fileID: 8984754096541894249, guid: ae523bdee2c73cc41ab2e2b15ac2e90c, type: 3}
+  - {fileID: 2073203306736515940, guid: ae523bdee2c73cc41ab2e2b15ac2e90c, type: 3}
+  - {fileID: 6669852852261953786, guid: ae523bdee2c73cc41ab2e2b15ac2e90c, type: 3}
+  - {fileID: -1994141993942582034, guid: ae523bdee2c73cc41ab2e2b15ac2e90c, type: 3}
+  - {fileID: -6551529566215524935, guid: ae523bdee2c73cc41ab2e2b15ac2e90c, type: 3}
+  - {fileID: -2814942542822663078, guid: ae523bdee2c73cc41ab2e2b15ac2e90c, type: 3}
+  - {fileID: 2493805615638919661, guid: ae523bdee2c73cc41ab2e2b15ac2e90c, type: 3}
+  - {fileID: -4655322527136287912, guid: ae523bdee2c73cc41ab2e2b15ac2e90c, type: 3}
+  - {fileID: -1544152531296120771, guid: ae523bdee2c73cc41ab2e2b15ac2e90c, type: 3}
+  - {fileID: -3267446111865229493, guid: ae523bdee2c73cc41ab2e2b15ac2e90c, type: 3}
+  - {fileID: 3337539751008439241, guid: ae523bdee2c73cc41ab2e2b15ac2e90c, type: 3}
+  - {fileID: 2208257980853179120, guid: ae523bdee2c73cc41ab2e2b15ac2e90c, type: 3}
+  vegList:
+  - {fileID: 406281563424081760, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
+  - {fileID: -8306028138807660050, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
+  - {fileID: -8770072569326603890, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
+  - {fileID: -2919000841868442761, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
+  - {fileID: 4161708306993295429, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
+  - {fileID: -2603706134471411246, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
+  - {fileID: 8486145648949958424, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
+  - {fileID: -7704404967208879050, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
+  - {fileID: 7193869190149748534, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
+  - {fileID: 1624065672729545117, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
+  - {fileID: -3995951863288265408, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
+  - {fileID: 4192380430544197927, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
   fallMin: 0.1
   fallMax: 0.5
 --- !u!58 &184396043
@@ -197,12 +223,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.08
 --- !u!50 &184396044
 Rigidbody2D:
   serializedVersion: 4
@@ -283,8 +309,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184396041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.14, y: 3.22, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 14.33, y: -3.39, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -385,7 +411,7 @@ GameObject:
   - component: {fileID: 317707695}
   m_Layer: 6
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -526,7 +552,7 @@ GameObject:
   - component: {fileID: 1095075536}
   m_Layer: 7
   m_Name: Player1
-  m_TagString: Player1
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -706,6 +732,7 @@ MonoBehaviour:
   spawnA: {fileID: 1534759802}
   spawnB: {fileID: 1727118345}
   foodObject: {fileID: 184396041}
+  targetTime: 2
 --- !u!4 &1462916889
 Transform:
   m_ObjectHideFlags: 0
@@ -798,7 +825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1929777181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,8 +838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8736bce842acf48bc829e3a1ff0abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 3
-  score: 0
 --- !u!4 &1929777182
 Transform:
   m_ObjectHideFlags: 0
@@ -842,7 +867,7 @@ GameObject:
   - component: {fileID: 1944238292}
   m_Layer: 8
   m_Name: Player2
-  m_TagString: Player2
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

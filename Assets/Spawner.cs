@@ -7,12 +7,25 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform spawnA; 
     [SerializeField] private Transform spawnB;
 
-    [SerializeField] public GameObject foodObject;
+    [SerializeField] private GameObject foodObject;
+
+    public float targetTime = 2f;
 
     void Update()
     {
-        //TIMER/SCORE BASED
+        targetTime -= Time.deltaTime;
+
+        if (targetTime <= 0.0f)
+        {
+            timerEnded();
+        }
+
+    }
+
+    void timerEnded()
+    {
         SpawnObject();
+        targetTime = 2f;
     }
 
     private void SpawnObject()
