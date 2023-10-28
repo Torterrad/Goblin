@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public int lives;
-    public int numOfHearts;
-    public GameManager GameManager;
+    public int MaxHealth;
+    public int CurrentHealth;
+  //  public GameManager GameManager;
 
     public Image[] hearts;
     public Sprite fullHeart;
@@ -16,14 +16,14 @@ public class Health : MonoBehaviour
 
      void Awake()
     {
-        GameManager = GameManager.GetComponent<GameManager>();
+        //GameManager = GameManager.GetComponent<GameManager>();
     }
     void Update()
     {
         for (int i = 0; i < hearts.Length; i++)
         {
 
-            if(i < lives)
+            if(i < MaxHealth)
             {
                 hearts[i].sprite = fullHeart;
             }
@@ -33,7 +33,7 @@ public class Health : MonoBehaviour
             }
 
 
-            if(i < numOfHearts)
+            if(i < CurrentHealth)
             {
                 hearts[i].enabled = true;
             }
@@ -44,7 +44,7 @@ public class Health : MonoBehaviour
 
             if(i < 1)
             {
-                GameManager.GameOver();
+               // GameManager.GameOver();
             }
         }
     }
