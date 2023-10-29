@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+
     void Awake()
     {
         currentHealth = maxHealth; //set current health to maxHealth

@@ -31,6 +31,10 @@ public class Movement2 : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] float checkDistance;
 
+
+
+    public Animator squashStrechAnimator;
+
     //if velocity is moving the direction opposite to the inputed direction the player is changing direction
     private bool changingDirection => rb.velocity.x > 0f && horizontalDirection < 0f || (rb.velocity.x < 0f && horizontalDirection > 0f);
 
@@ -115,6 +119,7 @@ public class Movement2 : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, 0f); //halt vertial movement
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); //apply jumpforce upward
+        squashStrechAnimator.SetTrigger("Jump");
     }
 
     private void FallMultiplier()
