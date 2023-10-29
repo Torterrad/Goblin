@@ -11,6 +11,7 @@ public class FoodMovement : MonoBehaviour
     private float foodType;
     [SerializeField] private Sprite[] meatList;
     [SerializeField] private Sprite[] vegList;
+    [SerializeField] private Sprite[] nutList;
     private int foodSprite;
     [SerializeField] private float fallMin;
     [SerializeField] private float fallMax;
@@ -20,18 +21,19 @@ public class FoodMovement : MonoBehaviour
 
     public GameObject splat;
 
+    public NutSpawner nutSpawner;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = Random.Range(fallMin, fallMax);
         foodType = Random.Range(0, 2);
-        Debug.Log(foodType);
-        if (foodType == 0f)
+        if (foodType == 0f && nutSpawner.sleep)
             SetVeg();
-        else
+        else if (foodType == 1f && nutSpawner.sleep)
             SetMeat();
-
-
+        else
+            SetNut();
     }
 
     private void SetVeg()
@@ -48,6 +50,14 @@ public class FoodMovement : MonoBehaviour
         //pick sprite
         foodSprite = Random.Range(0, 12);
         GetComponent<SpriteRenderer>().sprite = meatList[foodSprite];
+    }
+
+    private void SetNut()
+    {
+        gameObject.tag = "Nut"; //set tag
+        //pick sprite
+        foodSprite = Random.Range(0, 2);
+        GetComponent<SpriteRenderer>().sprite = nutList[foodSprite];
     }
 
     public void speedIncrease()
@@ -69,11 +79,6 @@ public class FoodMovement : MonoBehaviour
                 Vector2 SpawnHere = new Vector2(transform.position.x, -5.15f);
                 Instantiate(splat, SpawnHere, collision.transform.rotation);
                 FindObjectOfType<AudioManager>().Play("Splat1");
-                //PETE I'VE AT CLEANED CODE AND FIXED IT, YOU CANNOT DO THE COROUTINE IN HERE BC THE OBJECT GETS DESTROYED
-                //i made a new script on splat object all is needed is the coroutine and destroy
-                //the transform is just is position when it is destroyed anyway you
-                ////dont need a vector3 if its 2d or if its just going to be the current position
-                /////temp isnt needed bc it works the same way food spawns in, its just bc we dont have a prefab yet
                 
                 Destroy(gameObject);
             }

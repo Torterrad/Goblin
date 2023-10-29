@@ -11,6 +11,11 @@ TagManager:
   - Ground
   - Veg
   - Meat
+  - PowerUp
+  - Nut
+  - NutSpawner
+  - FoodSpawner
+  - Food
   layers:
   - Default
   - TransparentFX

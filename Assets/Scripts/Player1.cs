@@ -45,7 +45,7 @@ public class Player1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Veg")) //when not invincible and the object colliding with is an Enemy 
+        if (other.CompareTag("Veg") || other.CompareTag("Nut")) //when not invincible and the object colliding with is an Enemy 
             score.UpdateScore();
         else if (!invincible && other.CompareTag("Meat"))
         {
