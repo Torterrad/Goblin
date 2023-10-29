@@ -49,6 +49,7 @@ public class Player2 : MonoBehaviour
             score.UpdateScore();
         else if (!invincible && other.CompareTag("Veg"))
         {
+            FindObjectOfType<AudioManager>().Play("Damage");
             playerHandler.TakeDamage();
             StartCoroutine(iFrame());
         }

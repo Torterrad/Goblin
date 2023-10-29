@@ -56,6 +56,7 @@ public class Movement : MonoBehaviour
         horizontalDirection = GetInput().x; //get current input of player
         if (canJump)
             Jump();
+       
     }
 
     private void FixedUpdate()
@@ -119,6 +120,7 @@ public class Movement : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, 0f); //halt vertial movement
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); //apply jumpforce upward
+        FindObjectOfType<AudioManager>().Play("Jump");
         squashStrechAnimator.SetTrigger("Jump");
     }
 

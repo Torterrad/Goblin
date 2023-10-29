@@ -81,11 +81,25 @@ public class FoodMovement : MonoBehaviour
 
             if ((collision.gameObject.CompareTag("Player")))
             {
-                FindObjectOfType<AudioManager>().Play("Eat");
+                int rand1 = Random.Range(1, 4);
+
+                if (rand1 == 1)
+                    FindObjectOfType<AudioManager>().Play("Eat1");
+                if (rand1 == 2)
+                    FindObjectOfType<AudioManager>().Play("Eatin");
+                if (rand1 == 3)
+                    FindObjectOfType<AudioManager>().Play("Eating");
             }
             if ((collision.gameObject.CompareTag("Ground")))
             {
-                FindObjectOfType<AudioManager>().Play("Splat1");
+                int rand2 = Random.Range(1, 4);
+
+                if (rand2 == 1)
+                    FindObjectOfType<AudioManager>().Play("Splat1");
+                if (rand2 == 2)
+                    FindObjectOfType<AudioManager>().Play("Splat2");
+                if (rand2 == 3)
+                    FindObjectOfType<AudioManager>().Play("Splat3");
             }
         }
     }
