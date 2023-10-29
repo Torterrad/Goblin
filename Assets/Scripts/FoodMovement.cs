@@ -19,6 +19,7 @@ public class FoodMovement : MonoBehaviour
     [SerializeField] private float fallMaxLimit;
 
     public GameObject splat;
+    public GameObject particle;
 
     void Start()
     {
@@ -68,14 +69,16 @@ public class FoodMovement : MonoBehaviour
             {
                 Vector2 SpawnHere = new Vector2(transform.position.x, -5.15f);
                 Instantiate(splat, SpawnHere, collision.transform.rotation);
-                
+                Vector2 SpawnHere2 = new Vector2(transform.position.x, transform.position.y);
+                Instantiate(particle, SpawnHere2, collision.transform.rotation);
+
                 //PETE I'VE AT CLEANED CODE AND FIXED IT, YOU CANNOT DO THE COROUTINE IN HERE BC THE OBJECT GETS DESTROYED
                 //i made a new script on splat object all is needed is the coroutine and destroy
                 //the transform is just is position when it is destroyed anyway you
                 ////dont need a vector3 if its 2d or if its just going to be the current position
                 /////temp isnt needed bc it works the same way food spawns in, its just bc we dont have a prefab yet
-                
-                
+
+
                 Destroy(gameObject);
             }
 
