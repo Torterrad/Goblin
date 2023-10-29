@@ -41,9 +41,9 @@ public class Movement2 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         lastYPos = 0; //initialise last position to 0
-        
-        //DISTINGUIST BETWEEN PLAYER 1 AND 2 FOR BETTER MOVEMENT SCRIPT EFFECIENCY
 
+        //DISTINGUIST BETWEEN PLAYER 1 AND 2 FOR BETTER MOVEMENT SCRIPT EFFECIENCY
+        Physics2D.IgnoreLayerCollision(8, 7, true);
     }
 
     // Update is called once per frame

@@ -11,12 +11,12 @@ public class Spawner : MonoBehaviour
 
     [Header("Score")]
     public Score score;
-
-    [SerializeField] private float targetIncrease = 1000f;
+    public FoodMovement food;
 
     [SerializeField] private float timeReset;
-    [SerializeField] private float setTime = 3f;
-    [SerializeField] private float timeDecrement = 0.2f;
+    [SerializeField] private float setTime;
+    [SerializeField] private float timeDecrement;
+    [SerializeField] private float spawnLimit;
 
     private void Awake()
     {
@@ -25,24 +25,33 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
+        timerCountdown();
+    }
+
+    void timerCountdown()
+    {
         setTime -= Time.deltaTime;
 
         if (setTime <= 0.0f)
         {
             timerEnded();
+            timeDecrease();
+            food.speedIncrease();
         }
     }
-
     void timerEnded()
     {
         SpawnObject();
-        setTime = timeReset;
     }
 
     public void timeDecrease()
     {
-        if(setTime <= 0.8f)
-        setTime = setTime - timeDecrement;
+        if (timeReset > spawnLimit)
+        {
+            timeReset = (float)System.Math.Round(timeReset- timeDecrement,2);
+            Debug.Log("SPAWN RATE INCREASED" + "timeReset: "+ timeReset);
+        }
+        setTime = timeReset;
     }
     private void SpawnObject()
     {
