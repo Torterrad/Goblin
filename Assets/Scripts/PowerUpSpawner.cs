@@ -2,32 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class PowerUpSpawner : MonoBehaviour
 {
-    [SerializeField] private Transform spawnA; 
+    [SerializeField] private Transform spawnA;
     [SerializeField] private Transform spawnB;
 
-    [SerializeField] private GameObject foodObject;
+    [SerializeField] private GameObject powerUp;
 
     [Header("Score")]
     public Score score;
-    public FoodMovement food;
-    
 
+    [SerializeField] private float spawnTimeMin;
+    [SerializeField] private float spawnTimeMax;
     [SerializeField] private float timeReset;
     [SerializeField] private float setTime;
-    [SerializeField] private float timeDecrement;
-    [SerializeField] private float spawnLimit;
 
-    void Start()
+    public NutSpawner nutSpawner;
+
+    private void Awake()
     {
-        timeReset = setTime;
-
+        timeReset = Random.Range(spawnTimeMin, spawnTimeMax);
+        setTime = timeReset;
     }
 
     void Update()
     {
-        timerCountdown();
+        if(nutSpawner.sleep)
+            timerCountdown();
     }
 
     void timerCountdown()
@@ -37,24 +38,13 @@ public class Spawner : MonoBehaviour
         if (setTime <= 0.0f)
         {
             timerEnded();
-            timeDecrease();
-            food.speedIncrease();
         }
     }
-
 
     void timerEnded()
     {
         SpawnObject();
-    }
-
-    public void timeDecrease()
-    {
-        if (timeReset > spawnLimit)
-        {
-            timeReset = (float)System.Math.Round(timeReset- timeDecrement,2);
-            Debug.Log("SPAWN RATE INCREASED" + "timeReset: "+ timeReset);
-        }
+        timeReset = Random.Range(spawnTimeMin, spawnTimeMax);
         setTime = timeReset;
     }
     private void SpawnObject()
@@ -62,6 +52,6 @@ public class Spawner : MonoBehaviour
         Vector3 difference = spawnA.position - spawnB.position;
         Vector3 new_difference = difference * Random.Range(0.0f, 1.0f);
         Vector3 random_position = spawnA.position - new_difference;
-        Instantiate(foodObject, random_position, Quaternion.identity);
+        Instantiate(powerUp, random_position, Quaternion.identity);
     }
 }
