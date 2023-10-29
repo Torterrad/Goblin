@@ -16,10 +16,6 @@ public class FoodMovement : MonoBehaviour
     [SerializeField] private float fallMax;
     [SerializeField] private float fallIncrement;
 
-    public GameObject splat;
-    public Vector3 SpawnHere;
-    public GameObject food;
-    GameObject temp;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +35,7 @@ public class FoodMovement : MonoBehaviour
     {
         gameObject.tag = "Veg"; //set tag
         //pick sprite
-        foodSprite = Random.Range(0, 11);
+        foodSprite = Random.Range(0, 12);
         GetComponent<SpriteRenderer>().sprite = vegList[foodSprite];
     }
 
@@ -47,14 +43,18 @@ public class FoodMovement : MonoBehaviour
     {
         gameObject.tag = "Meat"; //set tag
         //pick sprite
-        foodSprite = Random.Range(0, 11);
+        foodSprite = Random.Range(0, 12);
         GetComponent<SpriteRenderer>().sprite = meatList[foodSprite];
     }
 
     public void speedIncrease()
     {
-        fallMin = fallMin + fallIncrement;
-        fallMax = fallMax + fallIncrement;
+        if (fallMin < fallMinLimit || fallMax < fallMaxLimit)
+        {
+            fallMin = (float)System.Math.Round(fallMin+fallIncrement,3);
+            fallMax = (float)System.Math.Round(fallMax+fallIncrement,3);
+        }
+        Debug.Log("INCREASE DROP SPEED! " + "FallMin: " + fallMin + " FallMax" + fallMax);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

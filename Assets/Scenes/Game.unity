@@ -464,12 +464,7 @@ MonoBehaviour:
   - {fileID: 1624065672729545117, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
   - {fileID: -3995951863288265408, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
   - {fileID: 4192380430544197927, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
-  fallMin: 0.3
-  fallMax: 0.5
-  fallIncrement: 0.3
-  splat: {fileID: 7052208586466065954, guid: 4a533dad991688a408573bd9a7c54ee2, type: 3}
-  SpawnHere: {x: 0, y: 0, z: 0}
-  food: {fileID: 184396041}
+
 --- !u!58 &184396043
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -807,8 +802,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317707692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.53, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: -3.0934, y: -5.4838, z: 0}
+  m_LocalScale: {x: 6.207, y: 5.2955003, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -1385,11 +1380,11 @@ MonoBehaviour:
     m_Bits: 256
   playerSprite: {fileID: 1095075539}
   Acceleration: 100
-  maxSpeed: 18
+  maxSpeed: 25
   groundlinearDrag: 8
-  jumpForce: 50
+  jumpForce: 80
   airLinearDrag: 4
-  fallMultiplier: 16
+  fallMultiplier: 24
   isFalling: 0
   lastYPos: 0
   onGround: 0
@@ -1502,7 +1497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095075535}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.04, y: -0.77, z: 3.6186917}
+  m_LocalPosition: {x: -14.34, y: -1.66, z: 0}
   m_LocalScale: {x: 3, y: 3, z: -1}
   m_Children:
   - {fileID: 826399807}
@@ -1769,7 +1764,7 @@ GameObject:
   - component: {fileID: 1164271440}
   m_Layer: 6
   m_Name: Wall2
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2220,7 +2215,7 @@ GameObject:
   - component: {fileID: 1461814735}
   m_Layer: 6
   m_Name: Wall1
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2349,10 +2344,11 @@ MonoBehaviour:
   spawnB: {fileID: 1727118345}
   foodObject: {fileID: 184396041}
   score: {fileID: 2070624822}
-  targetIncrease: 300
-  timeReset: 0
+  food: {fileID: 184396042}
+  timeReset: 2
   setTime: 2
-  timeDecrement: 0.5
+  timeDecrement: 0.05
+  spawnLimit: 0.75
 --- !u!4 &1462916889
 Transform:
   m_ObjectHideFlags: 0
@@ -2578,11 +2574,11 @@ MonoBehaviour:
     m_Bits: 128
   playerSprite: {fileID: 1944238295}
   Acceleration: 100
-  maxSpeed: 18
+  maxSpeed: 25
   groundlinearDrag: 8
-  jumpForce: 50
+  jumpForce: 80
   airLinearDrag: 4
-  fallMultiplier: 16
+  fallMultiplier: 24
   isFalling: 0
   lastYPos: 0
   onGround: 0
@@ -2695,7 +2691,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944238291}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.68, y: -0.36, z: 3.6186917}
+  m_LocalPosition: {x: -17.05, y: -0.65, z: 0}
   m_LocalScale: {x: 3, y: 3, z: -1}
   m_Children:
   - {fileID: 35439686}
@@ -3047,8 +3043,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 2070624819}
   scoreValue: 100
+  targetIncrement: 1000
+  targetHit: 0
+  spawnerCount: 1
   spawner: {fileID: 1462916888}
-  food: {fileID: 0}
+  food: {fileID: 184396042}
 --- !u!1 &2080050673
 GameObject:
   m_ObjectHideFlags: 0

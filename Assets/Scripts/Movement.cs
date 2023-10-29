@@ -43,7 +43,7 @@ public class Movement : MonoBehaviour
         lastYPos = 0; //initialise last position to 0
 
         //DISTINGUIST BETWEEN PLAYER 1 AND 2 FOR BETTER MOVEMENT SCRIPT EFFECIENCY
-
+        Physics2D.IgnoreLayerCollision(7, 8, true);
     }
 
     // Update is called once per frame

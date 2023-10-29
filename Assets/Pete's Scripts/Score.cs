@@ -9,8 +9,9 @@ public class Score: MonoBehaviour
     public TextMeshProUGUI scoreText;
     public int scoreValue;
     private int totalScore = 0;
-    private int targetIncrement = 1000;
-    private int targetHit;
+    [SerializeField] private int targetIncrement;
+    [SerializeField] private int targetHit;
+    public int spawnerCount = 1;
 
     [Header("Spawner")]
     public Spawner spawner;
@@ -33,8 +34,8 @@ public class Score: MonoBehaviour
         if(totalScore == targetHit)
         {
             targetHit = targetHit + targetIncrement;
-            spawner.timeDecrease();
-            food.speedIncrease();
+            //spawner.timeDecrease();
+            //food.speedIncrease();
         }
     }
 }
