@@ -78,9 +78,21 @@ public class FoodMovement : MonoBehaviour
             {
                 Vector2 SpawnHere = new Vector2(transform.position.x, -5.15f);
                 Instantiate(splat, SpawnHere, collision.transform.rotation);
+
                 FindObjectOfType<AudioManager>().Play("Splat1");
+
                 
+          
                 Destroy(gameObject);
+            }
+
+            if ((collision.gameObject.CompareTag("Player")))
+            {
+                FindObjectOfType<AudioManager>().Play("Eat");
+            }
+            if ((collision.gameObject.CompareTag("Ground")))
+            {
+                FindObjectOfType<AudioManager>().Play("Splat1");
             }
         }
     }
