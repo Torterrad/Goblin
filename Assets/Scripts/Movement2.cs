@@ -119,6 +119,7 @@ public class Movement2 : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, 0f); //halt vertial movement
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); //apply jumpforce upward
+        FindObjectOfType<AudioManager>().Play("Jump");
         squashStrechAnimator.SetTrigger("Jump");
     }
 

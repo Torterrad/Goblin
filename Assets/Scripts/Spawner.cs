@@ -63,5 +63,6 @@ public class Spawner : MonoBehaviour
         Vector3 new_difference = difference * Random.Range(0.0f, 1.0f);
         Vector3 random_position = spawnA.position - new_difference;
         Instantiate(foodObject, random_position, Quaternion.identity);
+        FindObjectOfType<AudioManager>().Play("Fall");
     }
 }

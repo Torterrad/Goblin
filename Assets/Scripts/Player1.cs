@@ -49,6 +49,7 @@ public class Player1 : MonoBehaviour
             score.UpdateScore();
         else if (!invincible && other.CompareTag("Meat"))
         {
+            FindObjectOfType<AudioManager>().Play("Damage");
             playerHandler.TakeDamage();
             StartCoroutine(iFrame());
         }
