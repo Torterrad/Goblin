@@ -15,8 +15,11 @@ public class FoodMovement : MonoBehaviour
     [SerializeField] private float fallMin;
     [SerializeField] private float fallMax;
     [SerializeField] private float fallIncrement;
+    [SerializeField] private float fallMinLimit;
+    [SerializeField] private float fallMaxLimit;
 
-    // Start is called before the first frame update
+    public GameObject splat;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,7 +30,7 @@ public class FoodMovement : MonoBehaviour
             SetVeg();
         else
             SetMeat();
-        temp = Instantiate(splat);
+
 
     }
 
@@ -63,22 +66,18 @@ public class FoodMovement : MonoBehaviour
         {
             if ((collision.gameObject.CompareTag("Ground") || (collision.gameObject.CompareTag("Player"))))
             {
-                Destroy(gameObject);
-                SpawnHere = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                Instantiate(temp, SpawnHere, collision.transform.rotation);
+                Vector2 SpawnHere = new Vector2(transform.position.x, -5.15f);
+                Instantiate(splat, SpawnHere, collision.transform.rotation);
                 FindObjectOfType<AudioManager>().Play("Splat1");
-                // Instantiate(splat);
+                //PETE I'VE AT CLEANED CODE AND FIXED IT, YOU CANNOT DO THE COROUTINE IN HERE BC THE OBJECT GETS DESTROYED
+                //i made a new script on splat object all is needed is the coroutine and destroy
+                //the transform is just is position when it is destroyed anyway you
+                ////dont need a vector3 if its 2d or if its just going to be the current position
+                /////temp isnt needed bc it works the same way food spawns in, its just bc we dont have a prefab yet
+                
                 Destroy(gameObject);
-
-                StartCoroutine(SelfDestruct());
-                Destroy(temp);
             }
         }
-    }
-    IEnumerator SelfDestruct()
-    {
-        yield return new WaitForSeconds(5f);
-        Destroy(gameObject);
     }
 
 }
