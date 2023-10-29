@@ -172,7 +172,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &47693425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,7 +464,12 @@ MonoBehaviour:
   - {fileID: 1624065672729545117, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
   - {fileID: -3995951863288265408, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
   - {fileID: 4192380430544197927, guid: cf2f0d97be606934aa2553e0979ac7de, type: 3}
-
+  fallMin: 0.3
+  fallMax: 0.5
+  fallIncrement: 0.025
+  fallMinLimit: 0.8
+  fallMaxLimit: 1
+  splat: {fileID: 3106089352753650385, guid: edaa759972e9b034e961be61691912b0, type: 3}
 --- !u!58 &184396043
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -480,7 +485,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.32
+  m_Radius: 0.25
 --- !u!50 &184396044
 Rigidbody2D:
   serializedVersion: 4
