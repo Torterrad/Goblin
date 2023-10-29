@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         //Activate game over screen
         gameOverScreen.SetActive(true);
         //Deactivate UI containing all other elements
-        GameUI.GetComponent<Canvas>().enabled = false;
+        //GameUI.GetComponent<Canvas>().enabled = false;
         //Disable the player, they shouldn't be able to control player after death
         player1.gameObject.SetActive(false);
         player2.gameObject.SetActive(false);

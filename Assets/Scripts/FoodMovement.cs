@@ -15,8 +15,7 @@ public class FoodMovement : MonoBehaviour
     [SerializeField] private float fallMin;
     [SerializeField] private float fallMax;
     [SerializeField] private float fallIncrement;
-    [SerializeField] private float fallMinLimit;
-    [SerializeField] private float fallMaxLimit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +27,8 @@ public class FoodMovement : MonoBehaviour
             SetVeg();
         else
             SetMeat();
+        temp = Instantiate(splat);
+
     }
 
     private void SetVeg()
@@ -63,8 +64,21 @@ public class FoodMovement : MonoBehaviour
             if ((collision.gameObject.CompareTag("Ground") || (collision.gameObject.CompareTag("Player"))))
             {
                 Destroy(gameObject);
+                SpawnHere = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                Instantiate(temp, SpawnHere, collision.transform.rotation);
+                FindObjectOfType<AudioManager>().Play("Splat1");
+                // Instantiate(splat);
+                Destroy(gameObject);
+
+                StartCoroutine(SelfDestruct());
+                Destroy(temp);
             }
         }
+    }
+    IEnumerator SelfDestruct()
+    {
+        yield return new WaitForSeconds(5f);
+        Destroy(gameObject);
     }
 
 }
